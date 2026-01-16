@@ -1,0 +1,1 @@
+from flask_helper.blueprintResource import BLUEPRINT_RESOURCE

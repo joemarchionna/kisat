@@ -1,0 +1,6 @@
+include *.asciidoc
+include requirements/prod.txt
+recursive-include flask_helper/*.asciidoc
+recursive-include flask_helper/*.json
+prune tests
+prune docs

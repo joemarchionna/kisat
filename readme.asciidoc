@@ -1,0 +1,66 @@
+= flask_helper - Flask and APIFlask Application Support
+
+Helper Classes and Methods for Flask and APIFlask Applications
+
+== Installation
+
+=== Development
+
+==== Environment and Dependancies
+
+Set up a virtual environment. Once an environment is set up and activated, run the command below to install development dependancies:
+
+[source,bash]
+----
+    pip install -r requirements/dev.txt 
+----
+
+The dev.txt file includes:
+
+* BLACK, a code formatter, see notes at the bottom of this file for details
+
+=== Production
+
+This was meant to be used as a library. When used as a library, it should be included in the requirement files as *flask_helper*.
+
+== Dependancies
+
+This project has no dependancies
+
+== Tests
+
+To run tests:
+
+[source,bash]
+----
+    python -m unittest discover -s tests/
+----
+
+== Creating A New Release
+
+=== Code Formatting
+
+Code formatting is done using BLACK. BLACK allows almost no customization to how code is formatted with the exception of line length, which has been set to 119 characters.
+
+Use the following to bulk format files:
+
+[source,bash]
+----
+    black . -l 144
+----
+
+=== Release Creation
+
+Please do the following when making a new release, most are documented above:
+
+. Run <<_tests>>
+. <<_code_formatting>>
+. Be sure to update the change log and _metadata.json with version and notes
+. Build package by running the following command:
++
+[source,bash]
+----
+    python -m build
+----
+. confirm the build process completed successfully
+. git add, commit, and push changes

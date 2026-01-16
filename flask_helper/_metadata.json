@@ -1,0 +1,21 @@
+
+{
+    "name": "flask_helper",
+    "version": "1.0.0",
+    "author": "Joe Marchionna",
+    "author_email": "joemarchionna@gmail.com",
+    "description": "Helper Classes and Methods for Flask and APIFlask Applications",
+    "requirements": "requirements/prod.txt",
+    "url": "https://github.com/joemarchionna/flask_helper",
+    "packageData":
+    {
+        "flask_helper": [
+            "*.json"
+        ]
+    },
+    "classifiers": [
+        "Programming Language :: Python :: 3",
+        "Operating System :: OS Independent",
+        "Intended Audience :: Developers"
+    ]
+}
