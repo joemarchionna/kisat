@@ -1,0 +1,1 @@
+from kisat.blueprintResource import BLUEPRINT_RESOURCE

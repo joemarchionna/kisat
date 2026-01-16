@@ -1,6 +1,6 @@
 include *.asciidoc
 include requirements/prod.txt
-recursive-include flask_helper/*.asciidoc
-recursive-include flask_helper/*.json
+recursive-include kisat/*.asciidoc
+recursive-include kisat/*.json
 prune tests
 prune docs

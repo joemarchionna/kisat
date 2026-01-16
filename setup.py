@@ -2,7 +2,7 @@ import setuptools, json
 from setuptools import setup
 
 # This file should not be edited when changing versions, edit the package metadata file
-_metadata = json.load(open("flask_helper/_metadata.json", "r"))
+_metadata = json.load(open("kisat/_metadata.json", "r"))
 
 setup(
     name=_metadata["name"],

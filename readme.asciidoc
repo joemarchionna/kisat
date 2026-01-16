@@ -1,4 +1,4 @@
-= flask_helper - Flask and APIFlask Application Support
+= kisat - Keep It Simple API Tools, Helper Classes, and Methods
 
 Helper Classes and Methods for Flask and APIFlask Applications
 

@@ -1,5 +1,5 @@
-from flask_helper.blueprintResource import BLUEPRINT_RESOURCE
-from flask_helper.exceptions import ResourceException
+from kisat.blueprintResource import BLUEPRINT_RESOURCE
+from kisat.exceptions import ResourceException
 import unittest
 
 

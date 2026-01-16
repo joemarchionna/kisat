@@ -1,5 +1,5 @@
-from flask_helper.blueprintResource.bpResource import _API_BP_RESOURCE
-from flask_helper.exceptions import ResourceException
+from kisat.blueprintResource.bpResource import _API_BP_RESOURCE
+from kisat.exceptions import ResourceException
 
 PREFIX_ATTRIBUTE = "_PREFIX"
 

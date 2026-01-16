@@ -1,4 +1,4 @@
-from flask_helper.blueprintResource import BLUEPRINT_RESOURCE
+from kisat.blueprintResource import BLUEPRINT_RESOURCE
 
 
 class BAD_RESOURCE(BLUEPRINT_RESOURCE):

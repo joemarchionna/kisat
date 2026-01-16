@@ -1,4 +1,4 @@
-from flask_helper.blueprintResource.bpResourceMetaCls import PREFIX_ATTRIBUTE, _API_BP_RESOURCE_METACLASS
+from kisat.blueprintResource.bpResourceMetaCls import PREFIX_ATTRIBUTE, _API_BP_RESOURCE_METACLASS
 
 
 class BLUEPRINT_RESOURCE(metaclass=_API_BP_RESOURCE_METACLASS):
