@@ -8,6 +8,10 @@ and this project adheres to https://semver.org/spec/v2.0.0.html[Semantic Version
 == [Unreleased]
 none
 
+== [1.2.0] - 2026 01 16
+=== Added
+- methodDesc method
+
 == [1.1.0] - 2026 01 16
 === Changed
 - project name change
