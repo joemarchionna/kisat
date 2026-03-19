@@ -18,7 +18,7 @@ _DS_DESC_END = {
 _logger = logging.getLogger(__name__)
 _logger.addHandler(logging.NullHandler())
 
-FIRST_LINE_TERMS_MSG = "The First Line Of The DOC String For Method '{}' Starts With A Terminating String, This May Be Unintentional"
+FIRST_LINE_TERMS_MSG = "The First Term Of The DOC String For Method '{}' Starts With A Terminating String, This May Be Unintentional"
 
 
 def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, terminatingStrs: list[str] = []) -> str:
@@ -38,14 +38,13 @@ def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, ter
         return ""
     lines = method.__doc__.split("\n")
     endPatterns = _DS_DESC_END.get(docStrType, terminatingStrs)
-    # print("EP: {}; LINES: {}".format(endPatterns,lines))
     desc = []
-    for i, s in enumerate(lines):
+    for s in lines:
         ss = s.strip()
         if ss:
             sl = ss.lower()
             if any([sl.startswith(x) for x in endPatterns]):
-                if i == 0:
+                if not desc:
                     _logger.debug(FIRST_LINE_TERMS_MSG.format(method.__name__))
                 break
             desc.append(ss)
