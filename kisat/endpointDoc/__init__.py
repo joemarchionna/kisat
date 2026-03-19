@@ -1,4 +1,5 @@
 from enum import Enum
+import logging
 
 
 class DOCSTRING_STYLE(Enum):
@@ -10,8 +11,11 @@ class DOCSTRING_STYLE(Enum):
 
 _DS_DESC_END = {DOCSTRING_STYLE.RESTRUCTXT: [":"], DOCSTRING_STYLE.GOOGLE: ["args", "return"], DOCSTRING_STYLE.NUMPY: ["parameters", "return"]}
 
+_logger = logging.getLogger(__name__)
+_logger.addHandler(logging.NullHandler())
 
-def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, terminatingStrs: list[str] = None) -> str:
+
+def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, terminatingStrs: list[str] = []) -> str:
     """
     returns a single-line string based on evaluating the __doc__ field of the method provided
 
@@ -24,6 +28,7 @@ def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, ter
         str: single line string
     """
     if not method.__doc__:
+        _logger.debug("No Doc String Found For {}".format(method.__name__))
         return ""
     lines = method.__doc__.split("\n")
     endPatterns = _DS_DESC_END.get(docStrType, terminatingStrs)
@@ -35,4 +40,6 @@ def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, ter
             if any([sl.startswith(x) for x in endPatterns]):
                 break
             desc.append(s)
-    return " ".join(desc)
+    ds = " ".join(desc)
+    _logger.debug("Doc String For {}: {}".format(method.__name__, ds))
+    return ds

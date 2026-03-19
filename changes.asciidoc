@@ -8,6 +8,12 @@ and this project adheres to https://semver.org/spec/v2.0.0.html[Semantic Version
 == [Unreleased]
 none
 
+== [1.4.0] - 2026 03 19
+=== Changed
+- methodDesc method, terminatingStrings default is empty list
+=== Added
+- logging
+
 == [1.3.0] - 2026 03 19
 === Changed
 - methodDesc method, default is GOOGLE
