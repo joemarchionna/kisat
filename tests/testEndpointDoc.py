@@ -11,9 +11,9 @@ def eds(a: int, b: int) -> int:
     return a + b
 
 
-def sd(a: int, b: int) -> int:
+def srt(a: int, b: int) -> int:
     """
-    docstring for method
+    docstring for restructured text
 
     :param a: Description
     :type a: int
@@ -21,9 +21,9 @@ def sd(a: int, b: int) -> int:
     return a + b
 
 
-def dd(a: int, b: int) -> int:
+def drt(a: int, b: int) -> int:
     """
-    docstring for method,
+    docstring for restructured text,
     this does crazy stuff
 
     :param a: Description
@@ -34,7 +34,7 @@ def dd(a: int, b: int) -> int:
 
 def sg(a: int, b: int) -> int:
     """
-    docstring for method
+    docstring for google
 
     Args:
         a (int): Description
@@ -44,7 +44,7 @@ def sg(a: int, b: int) -> int:
 
 def sn(a: int, b: int) -> int:
     """
-    docstring for method
+    docstring for numpy
 
     Parameters
     ----------
@@ -56,7 +56,7 @@ def sn(a: int, b: int) -> int:
 
 def snnp() -> int:
     """
-    docstring for method
+    docstring for numpy
 
     Returns
     -------
@@ -76,26 +76,31 @@ class TestEndpointDoc(unittest.TestCase):
         self.assertEqual("", md)
 
     def test_b_sd(self):
-        md = methodDesc(sd)
+        md = methodDesc(srt, DOCSTRING_STYLE.RESTRUCTXT)
         # print("Method Description: '{}'".format(md))
-        self.assertEqual("docstring for method", md)
+        self.assertEqual("docstring for restructured text", md)
 
     def test_c_dd(self):
-        md = methodDesc(dd)
+        md = methodDesc(drt, DOCSTRING_STYLE.RESTRUCTXT)
         # print("Method Description: '{}'".format(md))
-        self.assertEqual("docstring for method, this does crazy stuff", md)
+        self.assertEqual("docstring for restructured text, this does crazy stuff", md)
+
+    def test_d_sgd(self):
+        md = methodDesc(sg)
+        # print("Method Description: '{}'".format(md))
+        self.assertEqual("docstring for google", md)
 
     def test_d_sg(self):
         md = methodDesc(sg, DOCSTRING_STYLE.GOOGLE)
         # print("Method Description: '{}'".format(md))
-        self.assertEqual("docstring for method", md)
+        self.assertEqual("docstring for google", md)
 
     def test_e_sn(self):
         md = methodDesc(sn, DOCSTRING_STYLE.NUMPY)
         # print("Method Description: '{}'".format(md))
-        self.assertEqual("docstring for method", md)
+        self.assertEqual("docstring for numpy", md)
 
     def test_e_snnp(self):
         md = methodDesc(snnp, DOCSTRING_STYLE.NUMPY)
         # print("Method Description: '{}'".format(md))
-        self.assertEqual("docstring for method", md)
+        self.assertEqual("docstring for numpy", md)
