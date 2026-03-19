@@ -9,10 +9,16 @@ class DOCSTRING_STYLE(Enum):
     OTHER = 100
 
 
-_DS_DESC_END = {DOCSTRING_STYLE.RESTRUCTXT: [":"], DOCSTRING_STYLE.GOOGLE: ["args", "return"], DOCSTRING_STYLE.NUMPY: ["parameters", "return"]}
+_DS_DESC_END = {
+    DOCSTRING_STYLE.RESTRUCTXT: [":"],
+    DOCSTRING_STYLE.GOOGLE: ["arg", "argument", "attribute", "raise", "return", "example", "----"],
+    DOCSTRING_STYLE.NUMPY: ["parameter", "raise", "return", "example", "----"],
+}
 
 _logger = logging.getLogger(__name__)
 _logger.addHandler(logging.NullHandler())
+
+FIRST_LINE_TERMS_MSG = "The First Line Of The DOC String For Method '{}' Starts With A Terminating String, This May Be Unintentional"
 
 
 def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, terminatingStrs: list[str] = []) -> str:
@@ -22,7 +28,7 @@ def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, ter
     Args:
         method (callable): the callable method to evaluate the docstring of
         docStrType (DOCSTRING_STYLE, optional): the style the docstring is authored in. Defaults to DOCSTRING_STYLE.GOOGLE
-        terminatingStrs (list[str], optional): terminating strings used if DOCSTRING_STYLE.OTHER is specified, when evaluating the docstring, the evaluation of the docstring ends when it comes across a line that begins with any of these strings. Defaults to None
+        terminatingStrs (list[str], optional): terminating strings used if DOCSTRING_STYLE.OTHER is specified, when evaluating the docstring, the evaluation of the docstring ends when it comes across a line that begins with any of these strings. Defaults to an empty list
 
     Returns:
         str: single line string
@@ -32,14 +38,17 @@ def methodDesc(method, docStrType: DOCSTRING_STYLE = DOCSTRING_STYLE.GOOGLE, ter
         return ""
     lines = method.__doc__.split("\n")
     endPatterns = _DS_DESC_END.get(docStrType, terminatingStrs)
+    # print("EP: {}; LINES: {}".format(endPatterns,lines))
     desc = []
-    for s in lines:
-        s = s.strip()
-        if s:
-            sl = s.lower()
+    for i, s in enumerate(lines):
+        ss = s.strip()
+        if ss:
+            sl = ss.lower()
             if any([sl.startswith(x) for x in endPatterns]):
+                if i == 0:
+                    _logger.debug(FIRST_LINE_TERMS_MSG.format(method.__name__))
                 break
-            desc.append(s)
+            desc.append(ss)
     ds = " ".join(desc)
     _logger.debug("Doc String For {}: {}".format(method.__name__, ds))
     return ds

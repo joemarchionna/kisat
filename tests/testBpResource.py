@@ -1,6 +1,6 @@
+from kissut import LoggingTestCase
 from kisat.blueprintResource import BLUEPRINT_RESOURCE
 from kisat.exceptions import ResourceException
-import unittest
 
 
 class TEST_RESOURCE(BLUEPRINT_RESOURCE):
@@ -10,7 +10,7 @@ class TEST_RESOURCE(BLUEPRINT_RESOURCE):
     VERSION = "/version"
 
 
-class TestBlueprintResource(unittest.TestCase):
+class TestBlueprintResource(LoggingTestCase):
     def test_a_base(self):
         v = TEST_RESOURCE._PREFIX
         # print("a: '{}' ({})".format(v, type(v).__name__))

@@ -1,5 +1,5 @@
+from kissut import LoggingTestCase
 from kisat.endpointDoc import methodDesc, DOCSTRING_STYLE
-import unittest
 
 
 def nd(a: int, b: int) -> int:
@@ -66,7 +66,7 @@ def snnp() -> int:
     return 8
 
 
-class TestEndpointDoc(unittest.TestCase):
+class TestEndpointDoc(LoggingTestCase):
     def test_a_nd(self):
         md = methodDesc(nd)
         self.assertEqual("", md)
